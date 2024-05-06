@@ -26,15 +26,15 @@ const HomePage = () => {
         <div>
             <div>
                 <img src="/backgroundImg.jpg" alt="banner" style={{
-                    width: '1600px',
-                    height: '400px',
+                    // width: '1600px',
+                    // height: '400px',
                     maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))'
                 }} />
             </div>
 
-            <div className='flex h-fit'>
+            <div className='flex h-fit relative -top-96'>
                 <div
-                    className='w-[10%] h-fit flex justify-center cursor-pointer relative -top-16'
+                    className='w-[10%] h-fit flex justify-center cursor-pointer relative -top-16 text-gray-700'
                 >
                     <IoIosArrowBack
                         size={'3rem'}
@@ -50,7 +50,7 @@ const HomePage = () => {
                 </div>
 
                 <div
-                    className='w-[10%] h-fit flex justify-center cursor-pointer relative -top-16'
+                    className='w-[10%] h-fit flex justify-center cursor-pointer relative -top-16 text-gray-700'
                 >
 
                     <IoIosArrowForward

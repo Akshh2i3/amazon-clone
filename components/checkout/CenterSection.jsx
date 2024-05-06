@@ -50,7 +50,7 @@ const CenterSection = () => {
                 <div className='py-5 flex justify-between w-full border-b border-gray-400'>
                     <h1 className='font-bold text-xl'>2. Items and Delivery</h1>
                     <ul className='max-w-[60%] list-disc text-xl'>
-                        {cart.map((product) => (<li>{product.quantity} x {product.title}</li>))}
+                        {cart.map((product, i) => (<li key={i}>{product.quantity} x {product.title}</li>))}
                     </ul>
                 </div>
             </div>

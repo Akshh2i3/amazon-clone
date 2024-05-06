@@ -15,15 +15,15 @@ const CategoryWiseProducts = ({ category, live }) => {
     }, [])
 
     return (
-        <div className={`${live !== category && 'hidden'} m-3 p-3 bg-white rounded-lg w-full border border-gray-500 mx-auto relative -top-24`}>
-            <div className='font-semibold capitalize text-3xl pb-4 w-fit mx-auto space-x-8 tracking-wider'>
+        <div className={`${live !== category && 'hidden'} m-3 p-3 rounded-lg w-full border border-gray-500 mx-auto relative -top-24 bg-transparent backdrop-blur-sm`}>
+            <div className='font-bold capitalize text-3xl pb-4 w-fit mx-auto space-x-8 tracking-wider text-gray-800'>
                 {category}
             </div>
             <div className='flex justify-evenly gap-14 overflow-x-scroll no-scrollbar'>
                 {
                     categoryData.map((product) => (
                         <Link key={product.id} href={`product/${product.id}`}>
-                            <div className='p-2 border-2 border-gray-500 rounded-lg w-[250px] h-full'>
+                            <div className='p-2 border-2 bg-white border-gray-500 rounded-lg w-[250px] h-full'>
                                 <div className='flex flex-col items-center justify-evenly h-full gap-2 p-1'>
 
                                     <div className='p-3 rounded-lg bg-gray-200'>
