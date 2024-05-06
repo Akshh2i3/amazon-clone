@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import { useSuperbase } from '@/lib/superbase/hooks/useSuperbase'
-import ItemImg from '@/components/singleItem/itemImg';
+import ItemImg from '@/components/singleItem/ItemImg';
 import ItemContent from '@/components/singleItem/ItemContent';
 import AddToCartComp from '@/components/singleItem/AddToCartComp';
 
