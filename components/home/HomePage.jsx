@@ -16,7 +16,6 @@ const HomePage = () => {
     useEffect(() => {
         setTimeout(() => {
             setLiveImg((liveImg + 1) % 5)
-            console.log(liveImg)
         }, 4000)
     }, [liveImg])
 

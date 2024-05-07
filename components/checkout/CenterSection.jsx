@@ -12,8 +12,8 @@ const CenterSection = () => {
 
     const createStripeSession = async () => {
         const res = await superbase.auth.getUser()
-        const user = res.data.user
         console.log(user)
+        const user = res.data.user
 
         const checkoutSession = await axios.post('/api/checkout-sessions', {
             items: cart,

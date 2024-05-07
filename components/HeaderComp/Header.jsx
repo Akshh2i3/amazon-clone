@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div>
       <TopHeader user={user} setUser={setUser} />
-      <BottomHeader setUser={setUser} />
+      <BottomHeader user={user} setUser={setUser} />
     </div>
   )
 }

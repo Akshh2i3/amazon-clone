@@ -6,6 +6,7 @@ import { useSuperbase } from '@/lib/superbase/hooks/useSuperbase'
 import { useAppDispatch } from '@/lib/redux/reduxHooks'
 import { addToCart } from '@/redux/cartSlice'
 
+
 const CategoryWiseProducts = ({ category, live }) => {
     const { categoryData, getCategoryWiseData } = useSuperbase()
     const dispatch = useAppDispatch()
@@ -39,10 +40,11 @@ const CategoryWiseProducts = ({ category, live }) => {
 
                                     <div className='w-full'>
                                         <Link href='/cart'>
-                                            <div onClick={() => (
+                                            <div onClick={() => {
                                                 dispatch(addToCart(product))
-                                            )}
-                                                className='px-5 py-2 text-xl font-semibold rounded-lg text-center cursor-pointer bg-[#FFD814]'>ADD TO CART
+                                            }}
+                                                className='px-5 py-2 text-xl font-semibold rounded-lg text-center cursor-pointer bg-[#FFD814]'>
+                                                ADD TO CART
                                             </div>
                                         </Link>
                                     </div>
@@ -51,7 +53,7 @@ const CategoryWiseProducts = ({ category, live }) => {
                         </Link>
                     ))
                 }
-            </div>
+            </div >
         </div >
     )
 }

@@ -3,7 +3,20 @@ import React from 'react'
 import { IoLocationOutline } from "react-icons/io5";
 import { addToCart } from '@/redux/cartSlice';
 import { useAppDispatch } from '@/lib/redux/reduxHooks';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
+const notify = () => {
+    toast.success('Item Added to Cart', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+}
 
 const AddToCartComp = ({ singleProduct }) => {
     const dispatch = useAppDispatch()
@@ -27,10 +40,12 @@ const AddToCartComp = ({ singleProduct }) => {
                 <div>
                     <div
                         onClick={() => {
-                            dispatch(addToCart(singleProduct))
+                            notify();
+                            dispatch(addToCart(singleProduct));
                         }}
                         className=' mx-3 px-5 py-2 rounded-lg text-center cursor-pointer bg-[#FFD814]'>
                         ADD TO CART
+                        <ToastContainer />
                     </div>
                     <div className=' mx-3 px-5 py-2 rounded-lg text-center cursor-pointer bg-[#F39D06] mt-2'>BUY NOW</div>
                 </div>
