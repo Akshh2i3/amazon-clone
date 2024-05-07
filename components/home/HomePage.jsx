@@ -6,17 +6,25 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const HomePage = () => {
     const [live, setLive] = useState(0)
-    const categoryList = ["men's clothing", "women's clothing", "electronics", "jewelry"]
+    const [liveImg, setLiveImg] = useState(0)
+    const categoryList = ["men's clothing", "electronics", "women's clothing", "jewelry"]
 
     const ForwardHander = () => {
         setLive((live + 1) % categoryList.length);
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLiveImg((liveImg + 1) % 5)
+            console.log(liveImg)
+        }, 4000)
+    }, [liveImg])
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
             ForwardHander(live)
-        }, 4000);
+        }, 4000)
         return () => {
             clearTimeout(timer)
         }
@@ -25,14 +33,14 @@ const HomePage = () => {
     return (
         <div>
             <div>
-                <img src="/backgroundImg.jpg" alt="banner" style={{
+                <img src={`/background/${liveImg}.jpg`} alt="banner" style={{
                     // width: '1600px',
                     // height: '400px',
                     maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))'
                 }} />
             </div>
 
-            <div className='flex h-fit relative -top-96'>
+            <div className='flex h-fit relative -top-64'>
                 <div
                     className='w-[10%] h-fit flex justify-center cursor-pointer relative -top-16 text-gray-700'
                 >
