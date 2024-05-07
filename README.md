@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Amazon Clone
 
-## Getting Started
+Welcome to the Amazon Clone project! This project is a demonstration of building a full-fledged e-commerce platform similar to Amazon.in. It utilizes **Next.js** for front-end development, providing structure-based routing and server-side rendering for optimized performance. The backend is powered by **Node.js**, and data storage and authentication are handled using **Superbase**. Additionally, **Stripe** is integrated for seamless payment processing and authentication.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Authentication**: Implementing JWT authentication for secure user login and logout functionalities.
+- **Search Bar**: A robust search functionality to find products quickly and efficiently.
+- **Real Data**: Utilizing real data in Superbase to mimic the experience of shopping on Amazon.in.
+- **Smooth Animations**: Enhancing user experience with smooth animations and transitions.
+- **Add to Cart**: Users can easily add products to their shopping cart for later purchase.
+- **Easy Payment Option**: Seamless payment processing through Stripe for hassle-free transactions.
+- **Checkout Feature**: Complete the shopping experience with a straightforward checkout process.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Next.js**: A React framework for building fast and scalable web applications.
+- **Node.js**: A JavaScript runtime for building server-side applications.
+- **Superbase**: An open-source alternative to Firebase, providing data storage and authentication services.
+- **Stripe**: A popular payment gateway for secure and reliable online transactions.
+- **Tailwind**: A CSS Framework for providing seamless effects and animations.
