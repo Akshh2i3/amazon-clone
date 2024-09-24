@@ -47,7 +47,14 @@ const TopHeader = ({ user, setUser }) => {
         <div className="flex gap-3 items-center">
           <div>
             <Link href={'/signin'}>
-              <h1 className="text-sm cursor-pointer hover:underline">{user ? `Welcome ${(user.identities[0].identity_data.full_name).split(' ')[0]}` : 'Sign-In'}</h1>
+              <h1 className="text-sm cursor-pointer hover:underline">
+                {user ? (() => {
+                  const { full_name, user_name } = user.identities[0].identity_data;
+                  return full_name ? `Welcome ${full_name.split(' ')[0]}` : user_name;
+                })()
+                  : 'Sign-In'}
+              </h1>
+
             </Link>
             <h1 className="font-bold ">Account & Lists</h1>
           </div>
