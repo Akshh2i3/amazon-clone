@@ -29,22 +29,24 @@ const BottomHeader = ({ user, setUser }) => {
         <li>Gift Cards</li>
         <li>Sell</li>
       </ul>
-      <h1
-        onClick={async () => {
-          try {
-            if (!user) return
-            await superbase.auth.signOut()
-            setUser(undefined)
-            notify()
-            console.log('sign-out successfully')
-          } catch (error) {
-            console.log('error while signing out user')
-            console.log(error)
-          }
-        }}
-        className='text-[#F3A847] font-bold border-b-2 border-transparent hover:border-[#F3A847] mr-[3vw] px-2 text-xl'>
-        Sign Out
-        <ToastContainer /></h1>
+      {user && (
+        <h1
+          onClick={async () => {
+            try {
+              if (!user) return
+              await superbase.auth.signOut()
+              setUser(undefined)
+              notify()
+              console.log('sign-out successfully')
+            } catch (error) {
+              console.log('error while signing out user')
+              console.log(error)
+            }
+          }}
+          className='text-[#F3A847] font-bold border-b-2 border-transparent hover:border-[#F3A847] mr-[3vw] px-2 text-xl'>
+          Sign Out
+          <ToastContainer /></h1>
+      )}
     </div>
   )
 }
