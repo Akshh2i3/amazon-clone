@@ -11,6 +11,7 @@ const page = () => {
                 <Auth
                     supabaseClient={superbase}
                     appearance={{ theme: ThemeSupa }}
+                    providers={['github']}
                 />
             </div>
         </div>
