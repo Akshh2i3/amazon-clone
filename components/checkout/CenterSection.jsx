@@ -11,27 +11,42 @@ const CenterSection = () => {
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY)
 
     const createStripeSession = async () => {
-        const res = await superbase.auth.getUser()
-        console.log(user)
-        const user = res.data.user
+        try {
+            const res = await superbase.auth.getUser()
+            const user = res?.data?.user
+            if (!user) {
+                console.error("User not found")
+                return
+            }
+            console.log(user)
 
-        const checkoutSession = await axios.post('/api/checkout-sessions', {
-            items: cart,
-            email: user?.email
-        })
-        console.log(checkoutSession)
+            const checkoutSession = await axios.post('/api/checkout-sessions', {
+                items: cart,
+                email: user?.email
+            })
+            console.log(checkoutSession)
 
-        if (checkoutSession.statusCode === 500) {
-            console.error(checkoutSession.message)
-            return
+            if (checkoutSession?.statusCode === 500) {
+                console.error(checkoutSession.message)
+                return
+            }
+
+            const stripe = await stripePromise
+            if (!stripe) {
+                console.error('Stripe not loaded')
+                return
+            }
+
+            const { error } = await stripe.redirectToCheckout({
+                sessionId: checkoutSession?.data?.id
+            })
+
+            if (error) {
+                console.log(error.message)
+            }
+        } catch (err) {
+            console.error('Error during checkout process:', err)
         }
-
-        const stripe = await stripePromise
-        const { error } = await stripe.redirectToCheckout({
-            sessionId: checkoutSession.data.id
-        })
-
-        console.log(error?.message)
     }
 
     return (
@@ -40,9 +55,8 @@ const CenterSection = () => {
                 <div className='py-5 flex justify-between border-b border-gray-400'>
                     <h1 className='font-bold text-xl'>1. Delivery Address</h1>
                     <p>
-                        Ajeet Dhakad<br />
-                        Ruby Apartment<br />
-                        Vidhur Colony<br />
+                        Maya Gupta<br />
+                        Eden Garden Appartment, Sector 53 <br />
                         Pune, Maharashtra 144411<br />
                         Add Delivery instructions<br />
                     </p>
@@ -56,7 +70,7 @@ const CenterSection = () => {
             </div>
             <div className='w-1/5 border border-gray-400 h-fit p-4'>
                 <div className='flex flex-col gap-2'>
-                    <p className='text-xl underline mb-3'>OrderSummary</p>
+                    <p className='text-xl underline mb-3'>Order Summary</p>
                     {
                         cart.map((product, idx) => (
                             <p key={idx}>Product {idx + 1}: {product.price} * ({product.quantity}) = ${product.quantity * product.price}</p>
@@ -66,9 +80,10 @@ const CenterSection = () => {
                 </div>
                 <div className='bg-yellow-300 text-xl font-semibold w-full text-center py-3 rounded-lg cursor-pointer mt-5'
                     onClick={createStripeSession}
-                >Click for Final Payment </div>
+                >
+                    Click for Final Payment
+                </div>
             </div>
-
         </div>
     )
 }
